@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>English Quest: 8 Tema Oyunu</title>
+<style>
+:root{--bg:#f4f5fb;--cd:#fff;--tx:#1c2033;--mu:#5d6480;--ln:#e2e5f0;--ac:#6c5ce7;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#12141f;--cd:#1e2236;--tx:#eef0ff;--mu:#9ba1c4;--ln:#2d3250}}
+:root[data-theme=dark]{--bg:#12141f;--cd:#1e2236;--tx:#eef0ff;--mu:#9ba1c4;--ln:#2d3250}
+html{background:var(--bg);scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:720px;margin:auto;padding:16px}
+button{font:inherit;color:var(--tx)}
+header{background:var(--ac);color:#fff;padding:12px 16px;border-radius:16px;margin-bottom:12px}
+header div{display:flex;justify-content:space-between;font-weight:700}
+.pb{height:8px;background:rgba(255,255,255,.3);border-radius:8px;margin-top:8px;overflow:hidden}
+.pb i{display:block;height:100%;background:#ffd84d;width:0;transition:width .4s}
+h2{margin:12px 0 4px}h3{margin:18px 0 4px}small{color:var(--mu);font-weight:400}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.c{background:var(--cd);border:2px solid var(--k);border-radius:14px;padding:12px;text-align:left;display:flex;flex-direction:column;gap:4px;cursor:pointer}
+.c span{font-size:28px}
+.k{background:var(--cd);border:1px solid var(--ln);border-radius:14px;padding:12px 14px;margin:8px 0}
+.k p{margin:4px 0}.k em{color:var(--mu);font-size:14px}
+.wg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.wg button{background:var(--cd);border:1px solid var(--ln);border-radius:12px;padding:12px;min-height:48px;cursor:pointer}
+.wg i{display:none;font-style:normal;color:var(--ac);font-weight:700}
+.wg .f b{display:none}.wg .f i{display:block}
+.o{display:block;width:100%;text-align:left;background:transparent;border:1px solid var(--ln);border-radius:10px;padding:10px 12px;margin:6px 0;cursor:pointer}
+.o:disabled{opacity:.6}
+.ok,.ok:disabled{background:#16a34a;color:#fff;border-color:#16a34a;opacity:1}
+.no,.no:disabled{background:#dc2626;color:#fff;border-color:#dc2626;opacity:1;animation:sh .3s}
+@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.b{background:none;border:0;color:var(--ac);font-weight:700;padding:8px 0;cursor:pointer}
+.win{text-align:center;font-weight:700;border-color:#f5b301}
+button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.in{width:100%;padding:10px;border-radius:10px;border:1px solid var(--ln);background:var(--bg);color:var(--tx);font:inherit;margin:6px 0}
+.bt{display:block;width:100%;background:var(--ac);color:#fff;border:0;border-radius:12px;padding:12px;margin:6px 0;font-weight:700;cursor:pointer}
+#fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:56px;height:56px;border-radius:50%;border:0;background:var(--ac);color:#fff;font-size:26px;box-shadow:0 4px 14px rgba(0,0,0,.35);z-index:8;cursor:pointer}
+.wl{position:fixed;inset:0;background:rgba(10,12,25,.8);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:9}
+.wl.on{display:flex}
+.ring{position:relative;width:min(88vw,360px);height:min(88vw,360px)}
+.ring button{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;border:3px solid var(--k);background:var(--cd);font-size:30px;cursor:pointer}
+.mid{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;font-weight:700;pointer-events:none;padding:30%}
+.sw{animation:zi .45s ease-out}
+@keyframes zi{0%{transform:scale(1.18);filter:blur(8px);opacity:0}100%{transform:none;filter:none;opacity:1}}
+.gp{display:inline-flex;gap:3px;align-items:center;margin:4px 10px 4px 0;font-size:13px}
+.gp i{width:12px;height:12px;border-radius:50%;background:#b6bbd0}
+.gp .d1{background:#16a34a}.gp .d0{background:#dc2626}.gp .d2{background:#f59e0b}
+.ag{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.an{padding:12px 0;border-radius:10px;border:1px solid var(--ln);background:var(--cd);font-weight:700;cursor:pointer}
+.an.d1{background:#16a34a;color:#fff}.an.d0{background:#dc2626;color:#fff}.an.d2{background:#f59e0b;color:#fff}
+.lr{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--ln)}.lr span:first-child{font-weight:700}
+</style>
+</head>
+<body>
+<main>
+<header><div><span>🎮 English Quest</span><span>Lv: <span id="lv">Çaylak</span> · <span id="xp">0</span> XP</span></div><div class="pb"><i id="bar"></i></div></header>
+<div id="app"></div>
+</main>
+<script>
+const T=[
+{n:"School Life & Education",e:"🏫",c:"#3b82f6",
+g:[["Present Tenses","Alışkanlık için Simple, şu an olan iş için Continuous kullan.","I study every day. / I am studying now. (Her gün çalışırım. / Şu an çalışıyorum.)"],
+["used to","Eskiden yapardım ama artık yapmıyorum. used to + fiil.","I used to play chess. (Eskiden satranç oynardım.)"],
+["Conjunctions","Cümleleri yapıştıran kelimeler: and = ve, but = ama, because = çünkü, so = bu yüzden.","I was tired, so I slept. (Yorgundum, bu yüzden uyudum.)"]],
+v:[["trip","gezi"],["competition","yarışma"],["ceremony","tören"],["celebration","kutlama"],["habit","alışkanlık"],["past","geçmiş"]],
+q:[["Look! She ___ a book now.",["reads","is reading","read"],1],["I ___ play chess when I was a child.",["use to","used to","using to"],1],["I like pizza, ___ I don’t like burgers.",["but","because","so"],0]]},
+{n:"Classroom Life & Learning",e:"✏️",c:"#f97316",
+g:[["Passive Voice","Yapan kişi değil, yapılan iş önemli. be + V3.","The homework was done. (Ödev yapıldı.)"],
+["Shall for suggestions","Öneri sunmak için. Sadece I ve we ile kullanılır.","Shall we study together? (Birlikte çalışalım mı?)"],
+["Causatives","İşi başkasına yaptırmak. have/get + nesne + V3.","I had my hair cut. (Saçımı kestirdim.)"]],
+v:[["difficulty","zorluk"],["classroom","sınıf"],["teenager","genç"],["suggestion","öneri"],["pattern","kalıp"],["learn","öğrenmek"]],
+q:[["The window ___ by the boy.",["broke","was broken","breaking"],1],["___ we start the lesson?",["Shall","Do","Are"],0],["I ___ my bike repaired.",["had","made","did"],0]]},
+{n:"Personal Life & Well-Being",e:"📱",c:"#8b5cf6",
+g:[["Past Tenses","Simple Past: bitmiş iş. Past Continuous: geçmişte o sırada süren iş.","I was watching TV when you called. (Sen aradığında TV izliyordum.)"],
+["got used to","Alıştım demek. got used to + fiil-ing.","I got used to waking up early. (Erken kalkmaya alıştım.)"],
+["Question Tags","Cümle sonuna eklenen “değil mi?”. Olumlu cümle → olumsuz tag, olumsuz cümle → olumlu tag.","You like pizza, don’t you? (Pizzayı seversin, değil mi?)"]],
+v:[["social media","sosyal medya"],["healthy","sağlıklı"],["diet","diyet"],["exercise","egzersiz"],["sleep","uyku"],["lifestyle","yaşam tarzı"]],
+q:[["I ___ TV when the phone rang.",["watched","was watching","watch"],1],["She is happy, ___?",["isn’t she","is she","doesn’t she"],0],["I got used to ___ early.",["wake","waking","woke"],1]]},
+{n:"Family Life & Home",e:"🏠",c:"#10b981",
+g:[["Comparatives","Kısa sıfat + er than. Uzun sıfat: more + sıfat + than.","taller than, more beautiful than (daha uzun, daha güzel)"],
+["Same as","Aynı demek: the same as. Farklı demek: different from.","My phone is the same as yours. (Telefonum seninkiyle aynı.)"],
+["Modals","can = yapabilir, must = zorunlu, should = tavsiye, might = belki. Arkasına yalın fiil gelir.","You should rest. (Dinlenmelisin.)"]],
+v:[["smart home","akıllı ev"],["plan","plan"],["future","gelecek"],["furniture","mobilya"],["bedroom","yatak odası"],["relative","akraba"]],
+q:[["My house is ___ than yours.",["big","bigger","more big"],1],["Your bag is the same ___ mine.",["as","than","from"],0],["You are ill. You ___ rest.",["should","are","to"],0]]},
+{n:"Neighbourhood & City Life",e:"🏙️",c:"#0ea5e9",
+g:[["Past Passive","Geçmişte yapılmış iş. was/were + V3.","The park was built in 2010. (Park 2010’da yapıldı.)"],
+["Be able to","can’in her zaman hali. Geçmişte ve gelecekte de kullanılır.","I was able to help. (Yardım edebildim.)"],
+["Causatives","Yine yaptırma: have + nesne + V3.","She had her car repaired. (Arabasını tamir ettirdi.)"]],
+v:[["helpfulness","yardımseverlik"],["solidarity","dayanışma"],["community","topluluk"],["volunteer","gönüllü"],["traffic","trafik"],["project","proje"]],
+q:[["The bridge ___ in 1990.",["built","was built","is built"],1],["I ___ able to swim at five.",["was","can","will"],0],["We ___ our windows cleaned.",["had","did","made"],0]]},
+{n:"World & Culture",e:"🌍",c:"#ef4444",
+g:[["Future Tenses","will = ani karar veya tahmin. be going to = önceden planlanmış iş veya belirti.","I am going to travel. (Seyahat edeceğim.)"],
+["Will adapt to","adapt to = uyum sağlamak. will ile gelecekte uyum sağlanacağını söyle.","People will adapt to new cultures. (İnsanlar yeni kültürlere uyum sağlayacak.)"],
+["Future Passive","Gelecekte yapılacak iş. will be + V3.","The festival will be held next month. (Festival gelecek ay yapılacak.)"]],
+v:[["organic","organik"],["nutrition","beslenme"],["event","etkinlik"],["culture","kültür"],["diversity","çeşitlilik"],["sport","spor"]],
+q:[["Look at the clouds! It ___ rain.",["will","is going to","goes"],1],["The match ___ next week.",["will be played","is played","played"],0],["I think people ___ to new cultures.",["will adapt","adapted","adapting"],0]]},
+{n:"Nature & Global Problems",e:"🌱",c:"#6366f1",
+g:[["Relative Clauses","İsmi tanımlayan ek cümle. who = kişi, which = şey, where = yer.","The man who helps me is my uncle. (Bana yardım eden adam amcam.)"],
+["Gerunds (-ing)","Fiil + ing isim gibi çalışır. enjoy, avoid, finish gibi fiillerden sonra gelir.","I enjoy swimming. (Yüzmekten hoşlanırım.)"]],
+v:[["pollution","kirlilik"],["environment","çevre"],["global warming","küresel ısınma"],["solution","çözüm"],["protect","korumak"],["damage","zarar"]],
+q:[["The girl ___ lives next door is my friend.",["which","who","where"],1],["This is the city ___ I was born.",["where","who","which"],0],["I enjoy ___ in the sea.",["swim","to swim","swimming"],2]]},
+{n:"Universe & Future",e:"🚀",c:"#a855f7",
+g:[["Conditional 2","Hayali durumlar. if + V2, would + yalın fiil.","If I had a time machine, I would visit the future. (Zaman makinem olsaydı geleceği gezerdim.)"],
+["Wish clauses","Şu an olmayanı dilemek. wish + V2.","I wish I had a robot. (Keşke bir robotum olsaydı.)"]],
+v:[["time travel","zaman yolculuğu"],["robot","robot"],["universe","evren"],["planet","gezegen"],["technology","teknoloji"],["imagine","hayal etmek"]],
+q:[["If I ___ rich, I would buy a spaceship.",["am","were","will be"],1],["I wish I ___ fly.",["can","could","will"],1],["If she studied, she ___ pass.",["would","will","can"],0]]}
+];
+const L=["Çaylak","Kâşif","Gezgin","Usta","Efsane"];
+let xp=0;const S=T.map(t=>t.q.map(()=>null));
+const $=id=>document.getElementById(id);
+function head(){const l=Math.min(Math.floor(xp/60),4);$("lv").textContent=L[l];$("xp").textContent=xp;$("bar").style.width=(xp>=240?100:xp%60/60*100)+"%"}
+function home(){
+$("app").innerHTML="<h2>🗺️ Harita</h2><p><small>Bir tema seç, konuyu oku, kartları çevir, quizi çöz. Her doğru cevap +10 XP. 1200 XP = Efsane!</small></p><div class=g>"+
+T.map((t,i)=>{const d=S[i].filter(x=>x==1).length;return `<button class=c style="--k:${t.c}" onclick="show(${i})"><span>${t.e}</span><b>${i+1}. ${t.n}</b><small>${d}/${S[i].length} ⭐</small></button>`}).join("")+"</div>";
+scrollTo(0,0)}
+function show(i){const t=T[i];
+$("app").innerHTML=`<button class=b onclick="home()">← Haritaya dön</button><h2 style="color:${t.c}">${t.e} ${CH[i]} <small>· Tema ${i+1}: ${t.n}</small></h2><h3>📖 Kolay anlatım</h3>`+
+t.g.map(g=>`<div class=k><b>${g[0]}</b><p>${g[1]}</p><em>${g[2]}</em></div>`).join("")+
+`<h3>🃏 Kelime kartları <small>(dokun, anlamını gör)</small></h3><div class=wg>`+
+t.v.map(v=>`<button onclick="this.classList.toggle('f')"><b>${v[0]}</b><i>${v[1]}</i></button>`).join("")+
+`</div><h3>🎯 Mini quiz</h3><div id=qz></div>`;
+quiz(i);scrollTo(0,0)}
+function quiz(i){$("qz").innerHTML=T[i].q.map((q,j)=>`<div class=k><p><b>${j+1}.</b> ${q[0]}</p>`+q[1].map((o,k)=>`<button class=o onclick="pick(${i},${j},${k},this)">${o}</button>`).join("")+`<div id=r${j}></div></div>`).join("")}
+function pick(i,j,k,b){const q=T[i].q[j],s=S[i];if(s[j]>0)return;const r=$("r"+j);
+if(k==q[2]){b.classList.add("ok");s[j]=s[j]===0?2:1;if(s[j]==1)xp+=10;
+b.parentNode.querySelectorAll(".o").forEach(x=>x.disabled=true);
+r.textContent=s[j]==1?"🎉 Doğru! +10 XP":"👍 Doğru! (ilk denemede olmadığı için XP yok)";head();fin(i)}
+else{b.classList.add("no");b.disabled=true;if(s[j]===null)s[j]=0;r.textContent="❌ Olmadı, tekrar dene!"}}
+function fin(i){if(S[i].every(x=>x>0)&&!$("win")){const n=S[i].filter(x=>x==1).length;
+$("qz").insertAdjacentHTML("beforeend",`<div id=win class="k win">🏆 Tema bitti! İlk denemede ${n}/${S[i].length} ⭐</div>`)}}
+const CH=["Okul Kâşifi","Sınıf Dehası","Sağlık Ustası","Ev Mimarı","Şehir Kahramanı","Dünya Gezgini","Doğa Koruyucu","Uzay Pilotu"];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>"&#"+c.charCodeAt(0)+";");
+let cur=-1,me="";try{me=localStorage.getItem("eqn")||""}catch(e){}
+document.body.insertAdjacentHTML("beforeend",`<button id=fab onclick="wh(1)" aria-label="Karakter değiştir">🎭</button><div id=wl class=wl onclick="if(event.target==this)wh(0)"><div class=ring id=rg></div></div>`);
+function wh(on){$("wl").classList.toggle("on",!!on);if(!on)return;const R=Math.min(innerWidth*.88,360)*.38;
+$("rg").innerHTML=T.map((t,i)=>{const a=i/8*6.2832-1.5708;return `<button style="--k:${t.c};transform:translate(${Math.cos(a)*R}px,${Math.sin(a)*R}px)${i==cur?' scale(1.25)':''}" onclick="pickC(${i})" aria-label="${CH[i]}">${t.e}</button>`}).join("")+`<div class=mid>${cur<0?"Karakter seç":CH[cur]}</div>`}
+function pickC(i){wh(0);show(i)}
+const _s=show;show=function(i){cur=i;_s(i);const a=$("app");a.classList.remove("sw");void a.offsetWidth;a.classList.add("sw")};
+const _h=home;home=function(){cur=-1;_h();extra()};
+function extra(){$("app").insertAdjacentHTML("beforeend",`<div class=k><b>👤 Adın</b><input class=in id=nm maxlength=20 placeholder="Adını yaz" value="${esc(me)}" oninput="me=this.value;try{localStorage.setItem('eqn',me)}catch(e){}"><button class=bt onclick="send()">📤 Sonucumu öğretmene gönder</button><div id=rp></div></div><button class=b onclick="teacher()">👩‍🏫 Öğretmen paneli</button>`)}
+function send(){const r=$("rp");if(!me.trim()){r.textContent="Önce adını yaz 🙂";return}
+const t="EQ2|"+me.replace(/[|\n]/g," ").trim()+"|"+xp+"|"+S.flat().map(x=>x===null?"-":x).join("")+"|"+A.map(x=>x===null?"-":x).join("");
+r.innerHTML=`<p><small>Bu kodu öğretmene gönder:</small></p><textarea class=in id=cd readonly rows=3>${esc(t)}</textarea><button class=bt onclick="cp()">📋 Kopyala</button><a class=bt href="https://wa.me/?text=${encodeURIComponent(t)}" target=_blank rel=noopener style="text-align:center;text-decoration:none;background:#16a34a">WhatsApp ile gönder</a>`}
+function cp(){const c=$("cd");c.select();try{navigator.clipboard.writeText(c.value)}catch(e){document.execCommand("copy")}}
+function teacher(){$("app").innerHTML=`<button class=b onclick="home()">← Geri</button><h2>👩‍🏫 Öğretmen paneli</h2><p><small>Öğrencilerin gönderdiği kodları buraya yapıştır (her satıra bir öğrenci, EQ2| ile başlar). 🟢 ilk denemede doğru · 🟠 sonradan düzeltti · 🔴 yanlış · ⚪ çözülmedi</small></p><textarea id=ta class=in rows=5></textarea><button class=bt onclick="showT()">Sonuçları göster</button><div id=out></div>`;try{$("ta").value=localStorage.getItem("eqt")||""}catch(e){}showT()}
+function showT(){const v=$("ta").value;try{localStorage.setItem("eqt",v)}catch(e){}
+const rows=v.split("\n").filter(l=>l.trim().startsWith("EQ|")).map(l=>l.trim().split("|"));
+$("out").innerHTML=rows.length?rows.map(p=>{const a=p[3]||"";let ok=0,bad=[],dots="";
+for(let i=0;i<8;i++){dots+=`<span class=gp>${T[i].e}`;for(let j=0;j<3;j++){const c=a[i*3+j]||"-";if(c=="1")ok++;if(c=="0"||c=="2")bad.push(`${c=="0"?"❌":"🔁"} ${T[i].e} ${T[i].q[j][0]} → <b>${T[i].q[j][1][T[i].q[j][2]]}</b>`);dots+=`<i class="d${"012".includes(c)?c:"n"}"></i>`}dots+="</span>"}
+return `<div class=k><b>${esc(p[1]||"?")}</b> · ${esc(p[2]||"0")} XP · ilk denemede <b>${ok}/24</b><div>${dots}</div>${bad.length?"<p><small>Yanlış yapılanlar:</small></p>"+bad.map(x=>"<div>"+x+"</div>").join(""):"<p>✅ Hatasız!</p>"}</div>`}).join(""):"<p><small>Henüz kod yok.</small></p>"}
+head();home();if(location.hash=="#ogretmen")teacher();
+</script>
+<script>
+const NW=["exam=sınav,teacher=öğretmen,homework=ödev,lesson=ders,prize=ödül,graduation=mezuniyet,knowledge=bilgi",
+"mistake=hata,answer=cevap,question=soru,team=takım,practice=alıştırma yapmak,advice=tavsiye,grade=not",
+"stress=stres,vitamin=vitamin,hobby=hobi,tired=yorgun,breakfast=kahvaltı,energy=enerji,mood=ruh hali",
+"roof=çatı,garden=bahçe,kitchen=mutfak,parents=anne baba,sibling=kardeş,housework=ev işi,cozy=sıcak ve rahat",
+"neighbour=komşu,library=kütüphane,bridge=köprü,crowded=kalabalık,public transport=toplu taşıma,charity=hayır kurumu",
+"tradition=gelenek,international=uluslararası,language=dil,traditional=geleneksel,celebrate=kutlamak,customs=görenekler",
+"recycle=geri dönüştürmek,forest=orman,climate=iklim,waste=atık,endangered=nesli tükenmekte olan,earthquake=deprem",
+"space=uzay,alien=uzaylı,invention=icat,spaceship=uzay gemisi,dream=hayal,artificial intelligence=yapay zeka"];
+const NQ=[["He usually ___ to school by bus.|goes|go|is going","Listen! The teacher ___ to us.|is talking|talks|talk","We ___ live in Izmir, but now we live in Ankara.|used to|use to|are used to","I stayed at home ___ it was raining.|because|but|and","She is clever ___ she doesn’t study.|but|so|because","Mehmet ___ his homework every evening.|does|do|doing","They ___ football now.|are playing|play|plays","I ___ go to the cinema a lot, but I don’t now.|used to|use to|am used to","I was hungry, ___ I ate a sandwich.|so|but|because","Water ___ at 100 degrees.|boils|is boiling|boil"],
+["English ___ in many countries.|is spoken|speaks|speaking","The letters ___ by the secretary yesterday.|were written|wrote|are written","___ I open the window?|Shall|Will you|Do","Shall we ___ a picnic?|have|having|to have","I ___ my teeth checked yesterday.|had|made|did","She gets her hair ___ every month.|cut|cutting|to cut","Homework ___ every day.|is checked|checks|checking","Where ___ the exam held?|was|did|has","We ___ the walls painted last week.|had|painted|got to","Shall we ___ the answers together?|check|checking|checked"],
+["I ___ breakfast at 8 yesterday.|had|have|has","What ___ you doing at 9 last night?|were|did|are","He ___ to the gym when I saw him.|was going|went|goes","You didn’t eat, ___ you?|did|didn’t|do","They are tired, ___?|aren’t they|are they|don’t they","It’s cold today, ___?|isn’t it|is it|doesn’t it","She ___ used to the new school quickly.|got|gets|getting","We ___ used to eating healthy food.|got|go|made","He can swim, ___ he?|can’t|isn’t|doesn’t","I ___ a video when my phone fell.|was recording|recorded|record"],
+["This sofa is ___ than that one.|more comfortable|comfortable|comfortabler","My brother is ___ than me.|taller|tallest|more tall","Her bag is different ___ mine.|from|as|than","These shoes are the same ___ those.|as|to|of","You ___ wear a helmet. It’s the law.|must|might|can’t","It ___ rain tomorrow. I’m not sure.|might|must|should","___ I use your phone, please?|Can|Must|Does","A car is ___ than a bicycle.|faster|fastest|more fast","You ___ eat more vegetables. (tavsiye)|should|must to|might to","The flat is ___ than the house.|smaller|smallest|more small"],
+["The school ___ in 1985.|was opened|opened|is opened","These books ___ by volunteers.|were donated|donated|donate","I wasn’t ___ to find the library.|able|can|could able","She will be ___ to help us tomorrow.|able|can|could","We had our street ___ by workers.|cleaned|clean|cleaning","He has his car ___ every year.|serviced|service|to service","The old market ___ by the city last year.|was repaired|repaired|is repairing","Are you ___ to carry this box?|able|can|could","They ___ their house painted last month.|had|made|did"],
+["I ___ visit my grandma tomorrow. I planned it.|am going to|will|go","The phone rings. I ___ answer it.|will|am going to|answer","The new bridge ___ next year.|will be built|builds|built","Tickets ___ online next week.|will be sold|will sell|sold","Tomorrow it ___ sunny, I think.|will be|was|is being","We ___ adapt to the new climate.|will|are|were","The festival ___ in July.|will be held|held|will hold","It’s going to ___ cold tonight.|be|being|is","Many foods ___ at the festival.|will be served|will serve|served"],
+["The book ___ I read was great.|which|who|where","The woman ___ teaches us is kind.|who|which|where","That’s the park ___ we play football.|where|who|which","She avoids ___ plastic bags.|using|use|to use","I finished ___ my homework.|doing|do|to do","___ trees helps the Earth.|Planting|Plant|Planted","He enjoys ___ in the forest.|walking|walk|to walk","The scientists ___ study climate are worried.|who|which|where","Recycling is better than ___ waste away.|throwing|throw|to throw"],
+["If I ___ a robot, I would help you.|were|am|will be","If we lived on Mars, we ___ wear space suits.|would|will|can","I wish I ___ the answer.|knew|know|will know","I wish I ___ a spaceship.|had|have|will have","If he had more time, he ___ travel to space.|would|will|can","What would you do if you ___ invisible?|were|are|will be","I wish it ___ summer now.|were|is|will be","If I ___ a time machine, I would see dinosaurs.|had|have|will have","She wishes she ___ speak five languages.|could|can|will"]];
+NW.forEach((s,i)=>s.split(",").forEach(p=>T[i].v.push(p.split("="))));
+NQ.forEach((a,i)=>a.forEach(s=>{const p=s.split("|");T[i].q.push([p[0],p.slice(1),0])}));
+T.forEach((t,i)=>{t.q.forEach(q=>{const c=q[1][q[2]];q[1].sort(()=>Math.random()-.5);q[2]=q[1].indexOf(c)});while(S[i].length<t.q.length)S[i].push(null)});
+const W=[];T.forEach((t,i)=>t.v.forEach(v=>W.push([v[0],v[1],i])));
+const A=W.map(()=>null),LV=[0,150,400,800,1200];
+function head(){let l=0;LV.forEach((v,i)=>{if(xp>=v)l=i});$("lv").textContent=L[l];$("xp").textContent=xp;$("bar").style.width=(l==4?100:(xp-LV[l])/(LV[l+1]-LV[l])*100)+"%"}
+function extra(){$("app").insertAdjacentHTML("beforeend",`<button class=bt onclick="acts()">🧩 ${W.length} Etkinlik</button><button class=bt onclick="lst()">📚 Kelime listesi (${W.length})</button><div class=k><b>👤 Adın</b><input class=in id=nm maxlength=20 placeholder="Adını yaz" value="${esc(me)}" oninput="me=this.value;try{localStorage.setItem('eqn',me)}catch(e){}"><button class=bt onclick="send()">📤 Sonucumu öğretmene gönder</button><div id=rp></div></div><button class=b onclick="teacher()">👩‍🏫 Öğretmen paneli</button>`)}
+function lst(){$("app").innerHTML=`<button class=b onclick="home()">← Geri</button><h2>📚 Kelime listesi (${W.length})</h2><input class=in id=sr placeholder="Ara (İngilizce ya da Türkçe)" oninput="lf()"><div id=ls></div>`;lf()}
+function lf(){const q=$("sr").value.toLowerCase();$("ls").innerHTML=T.map((t,i)=>{const r=t.v.filter(v=>v[0].toLowerCase().includes(q)||v[1].toLowerCase().includes(q));return r.length?`<div class=k><b>${t.e} ${i+1}. ${t.n}</b>`+r.map(v=>`<div class=lr><span>${v[0]}</span><span>${v[1]}</span></div>`).join("")+"</div>":""}).join("")}
+function acts(){$("app").innerHTML=`<button class=b onclick="home()">← Geri</button><h2>🧩 ${W.length} Etkinlik</h2><p><small>Numaraya dokun. 🟢 ilk denemede doğru, 🟠 sonradan doğru, 🔴 yanlış. Doğru cevap +5 XP.</small></p><div class=ag>`+W.map((w,k)=>`<button class="an d${A[k]===null?"n":A[k]}" onclick="act(${k})">${k+1}</button>`).join("")+"</div>";scrollTo(0,0)}
+function typ(k){const t=k%4;return t==0&&W[k][0].includes(" ")?3:t}
+function scr(w,k){const a=[...w];let s=k*7+3;for(let i=a.length-1;i>0;i--){s=(s*31+7)%997;const j=s%(i+1);[a[i],a[j]]=[a[j],a[i]]}const r=a.join("");return r==w?a.reverse().join(""):r}
+function act(k){const w=W[k],ty=typ(k),e=w[0],tr=w[1],inp=`<input class=in id=ai autocomplete=off autocapitalize=off><button class=bt onclick="chk(${k})">Kontrol et</button>`;let b;
+if(ty==0)b=`🔀 Harfleri sırala: <b>${scr(e,k)}</b><br><small>Anlamı: ${tr}</small>${inp}`;
+else if(ty==1)b=`✍️ İngilizcesini yaz: <b>${tr}</b>${inp}`;
+else if(ty==3)b=`🧩 Eksik harfleri tamamla: <b>${e.replace(/[aeiou]/g,"_")}</b><br><small>Anlamı: ${tr}</small>${inp}`;
+else{const d=[];for(let n=1;d.length<2;n++){const x=W[(k*5+n*17)%W.length][1];if(x!=tr&&!d.includes(x))d.push(x)}
+b=`🎯 <b>${e}</b> ne demek?`+[tr,...d].sort(()=>Math.random()-.5).map(o=>`<button class=o onclick="chk(${k},this)">${o}</button>`).join("")}
+$("app").innerHTML=`<button class=b onclick="acts()">← Listeye dön</button><h2>${T[w[2]].e} Etkinlik ${k+1}/${W.length}</h2><div class=k>${b}<div id=ar></div></div>`;scrollTo(0,0)}
+function chk(k,b){const w=W[k],r=$("ar");if(A[k]>0){r.textContent="Bu etkinliği bitirdin ✅";return}
+const v=b?b.textContent:$("ai").value.trim().toLowerCase(),ok=typ(k)==2?v==w[1]:v==w[0].toLowerCase();
+if(ok){A[k]=A[k]===0?2:1;if(A[k]==1)xp+=5;head();const n=k<W.length-1;r.innerHTML=`${A[k]==1?"🎉 Doğru! +5 XP":"👍 Doğru!"} <b>${w[0]}</b> = ${w[1]}<button class=bt onclick="${n?"act("+(k+1)+")":"acts()"}">${n?"Sonraki ▶":"Listeye dön"}</button>`}
+else{if(A[k]===null)A[k]=0;r.textContent="❌ Olmadı, tekrar dene!";if(b)b.disabled=true}}
+function showT(){const v=$("ta").value;try{localStorage.setItem("eqt",v)}catch(e){}
+const rows=v.split("\n").filter(l=>l.trim().startsWith("EQ2|")).map(l=>l.trim().split("|"));
+$("out").innerHTML=rows.length?rows.map(p=>{const qa=p[3]||"",ac=p[4]||"";let o=0,ok=0,dots="",bad=[];
+T.forEach((t,i)=>{dots+=`<span class=gp>${t.e}`;t.q.forEach(q=>{const c=qa[o++]||"-";if(c=="1")ok++;if(c=="0"||c=="2")bad.push(`${c=="0"?"❌":"🔁"} ${t.e} ${q[0]} → <b>${q[1][q[2]]}</b>`);dots+=`<i class="d${"012".includes(c)?c:"n"}"></i>`});dots+="</span>"});
+const a1=[...ac].filter(c=>c=="1").length,ad=[...ac].filter(c=>"012".includes(c)).length;
+return `<div class=k><b>${esc(p[1]||"?")}</b> · ${esc(p[2]||"0")} XP<br>Quiz: ilk denemede <b>${ok}/100</b><div>${dots}</div>🧩 Etkinlik: ${ad}/100 bitti, ${a1} tanesi ilk denemede doğru${bad.length?"<p><small>Yanlış yapılan quiz soruları:</small></p>"+bad.map(x=>"<div>"+x+"</div>").join(""):"<p>✅ Quizde hata yok!</p>"}</div>`}).join(""):"<p><small>Henüz kod yok.</small></p>"}
+head();home();
+</script>
+</body>
+</html>
